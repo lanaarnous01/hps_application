@@ -76,7 +76,8 @@ class _AddPageState extends State<addPatient_page> {
                   SizedBox(height: 50),
                   buildBirthday(),
                   SizedBox(height: 50),
-                  buildWardNo()
+                  buildWardNo(),
+                  SizedBox(height: 50)
                 ],
               ),
             ),
