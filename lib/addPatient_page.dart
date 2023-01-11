@@ -32,7 +32,7 @@ class _AddPageState extends State<addPatient_page> {
               borderSide: BorderSide(color: Colors.redAccent, width: 3)),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.red, width: 3)),
-          labelText: 'Birthday',
+          labelText: 'Birth date',
         ),
       );
 
