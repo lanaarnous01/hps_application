@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class LoginNursePage extends StatefulWidget {
+  const LoginNursePage({Key? key}) : super(key: key);
 
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginNursePage> createState() => _LoginNursePageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginNursePageState extends State<LoginNursePage> {
   final emailController = TextEditingController();
   final patientIDController = TextEditingController();
 
   Widget buildEmail() => TextField(
         controller: emailController,
-        cursorColor: Color(0xffF5591F),
         decoration: InputDecoration(
             labelText: 'Email',
             enabledBorder: InputBorder.none,
@@ -20,34 +19,14 @@ class _RegisterPageState extends State<RegisterPage> {
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
       );
-  Widget buildPhoneNo() => TextField(
-        controller: patientIDController,
-        decoration: InputDecoration(
-          labelText: 'Phone Number',
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-        ),
-        keyboardType: TextInputType.number,
-        textInputAction: TextInputAction.done,
-      );
-  Widget buildName() => TextField(
-        controller: emailController,
-        decoration: InputDecoration(
-          labelText: 'Name',
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-        ),
-        keyboardType: TextInputType.emailAddress,
-        textInputAction: TextInputAction.done,
-      );
   Widget buildPassword() => TextField(
-        controller: emailController,
+        controller: patientIDController,
         decoration: InputDecoration(
           labelText: 'Password',
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
         ),
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.number,
         textInputAction: TextInputAction.done,
       );
 
@@ -109,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     alignment: Alignment.bottomRight,
                     child: Text(
-                      'Register',
+                      'Login Nurse',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
@@ -117,10 +96,24 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
           ),
-          Containerr(buildName()),
-          Containerr(buildEmail()),
-          Containerr(buildPhoneNo()),
-          Containerr(buildPassword())
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20, top: 70),
+            padding: EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.grey[200]),
+            alignment: Alignment.center,
+            child: buildEmail(),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20, top: 30),
+            padding: EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.grey[200]),
+            alignment: Alignment.center,
+            child: buildPassword(),
+          ),
         ]),
       ),
     );
