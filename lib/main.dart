@@ -4,6 +4,7 @@ import 'addPatient_page.dart';
 import 'register_page.dart';
 import 'option_page.dart';
 import 'loginNurse_page.dart';
+import 'patientInfo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginNursePage(),
-      //Option_page(),
-      // RegisterPage(),
+      home:
+          //patientInfo_page(),
+          //LoginNursePage(),
+          //Option_page(),
+          RegisterPage(),
       // addPatient_page(),
       //  LoginPage(),
     );
