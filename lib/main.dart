@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
-          //patientInfo_page(),
+          patientInfo_page(),
           //LoginNursePage(),
           //Option_page(),
-          RegisterPage(),
+         // RegisterPage(),
       // addPatient_page(),
       //  LoginPage(),
     );

@@ -43,6 +43,9 @@ class _PatientInfoState extends State<patientInfo_page> {
       ),
       Container(
         padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          
+        ),
         child: Text(
           'Tasks',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
