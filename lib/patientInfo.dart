@@ -17,7 +17,8 @@ class _PatientInfoState extends State<patientInfo_page> {
  final List<Map<String, dynamic>> gridMap =[
   {
     "title":"heart rate",
-    "numberr": "9"
+    "numberr": "9",
+    
   },
   {"title": "Blood pressure",
   "numberr": "9"},
@@ -25,31 +26,27 @@ class _PatientInfoState extends State<patientInfo_page> {
   "numberr": "9"},
   {"title": "data",
   "numberr": "9"},
-  // {"title": "Blood pressure",
-  // "numberr": "9"},
-  // {"title": "Blood pressure",
-  // "numberr": "9"},
-  // {"title": "Blood pressure 22",
-  // "numberr": "9"},
+  
 
 
  ];
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: 
       SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                decoration: BoxDecoration(color: Colors.white10),
+               Container(
+                decoration: BoxDecoration(color: Colors.white12),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                      SizedBox(
-                height: 50,
-                width: 10,
+                height: 20,
+                
               ),
               Text(
                 'Patient Information',
@@ -57,10 +54,64 @@ class _PatientInfoState extends State<patientInfo_page> {
                     color: Colors.black,
                     fontSize: 26,
                     fontWeight: FontWeight.bold),
-              )
+              ),
+              
+                  ],
+                ),
+                
+              ),
+              Container(
+                child: Stack(
+                  children: [
+                    Container(margin: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.amberAccent,
+                      borderRadius: BorderRadius.circular(20),
+                     
+                    ),
+                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                         Icon(Icons.person),
+                      SizedBox(width: 15,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Name',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text('Age',
+                          style: TextStyle(
+                            fontSize: 18, 
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text('Ward No.',
+                          style: TextStyle(
+                            fontSize: 18, 
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                          ),
+
+                        ],
+                      ),
+                      ],
+                     ),
+
+                    ),
                   ],
                 ),
               ),
+             
 
               Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -79,13 +130,14 @@ class _PatientInfoState extends State<patientInfo_page> {
                        
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: Colors.amber,
+                          color: Color.fromARGB(255, 245, 97, 43),
                         ),
                         child: Column(
                           children: [
                             Padding(padding: EdgeInsets.all(8),
                             child: Column(
                               children: [
+                                
                                 Text(
                       "${gridMap.elementAt(index)['title']}",
                       style: Theme.of(context).textTheme.subtitle1!.merge(
@@ -96,6 +148,7 @@ class _PatientInfoState extends State<patientInfo_page> {
 
                           ),
                     ),
+                    
                     SizedBox(height: 30,),
                      Text(
                       "${gridMap.elementAt(index)['numberr']}",
