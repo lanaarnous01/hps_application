@@ -39,27 +39,69 @@ class _PatientInfoState extends State<patientInfo_page> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Container(
-                decoration: BoxDecoration(color: Colors.white12),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                     SizedBox(
-                height: 20,
+            Container(
+            height: 100,
+            decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.only(
+                     
+                     bottomRight: Radius.circular(40),
+                       bottomLeft: Radius.circular(40)
+                      ),
+               // color: new Color(0xffF5591F),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter, //center
+                  end: Alignment.bottomCenter, //bottomright
+                  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
+                )),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 30),
+                    alignment: Alignment.topCenter,
+                    height: 40,
+                    width: 300,
+                    child: Text(
+                      'Patient Information',
+                      style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+               
+                ],
+              ),
+            ),
+          ),
+            // Stack(
+            //   children: [
+            //     Container(height: MediaQuery.of(context).size.height - 20,
+            //     width: MediaQuery.of(context).size.width,
+            //    color: Color(0xFFF3B2B7), 
+            //     ),
+            //     Positioned(
+            //       top: MediaQuery.of(context).size.height /8,
+            //       child: Container(
+            //         height: MediaQuery.of(context).size.height /1,
+            //         width: MediaQuery.of(context).size.width,
+            //         decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.only(topRight: Radius.circular(40),
+            //           topLeft: Radius.circular(40)),
+            //           color: Colors.white
+            //         ),
+                    
+            //       ),
+                  
+            //       ),
+                  
                 
-              ),
-              Text(
-                'Patient Information',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold),
-              ),
-              
-                  ],
-                ),
-                
-              ),
+
+            //   ],
+            // ),
               Container(
                 child: Stack(
                   children: [
@@ -130,7 +172,15 @@ class _PatientInfoState extends State<patientInfo_page> {
                        
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: Color.fromARGB(255, 245, 97, 43),
+                          
+                         gradient: LinearGradient(
+                  begin: Alignment.topCenter, 
+                  end: Alignment.bottomCenter, 
+                  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
+                ),
+                
+                        
+                         
                         ),
                         child: Column(
                           children: [
