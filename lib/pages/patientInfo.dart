@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/taskModel.dart';
 
-//addPatient_page
+
 class patientInfo_page extends StatefulWidget {
   const patientInfo_page({Key? key}) : super(key: key);
 

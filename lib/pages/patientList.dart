@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/listModel.dart';
+import '../widgets/patientList_widget.dart';
 class PatientListPage extends StatefulWidget {
   const PatientListPage({Key? key}) : super(key: key);
 
@@ -7,15 +8,13 @@ class PatientListPage extends StatefulWidget {
 }
 
 class _PatientListPageState extends State<PatientListPage> {
-  List patients = [
-Patient('name', 'wardNo'),
-Patient('name2', 'wardNo2'),
-Patient('name3', 'wardNo3'),
-Patient('name3', 'wardNo3'),
-Patient('name3', 'wardNo3'),
-Patient('name3', 'wardNo3'),
-Patient('name3', 'wardNo3'),
-Patient('name3', 'wardNo3'),
+  final List <Patient> patients = [
+Patient(name: 'name', wardNo: 'wardNo'),
+Patient(name: 'name2', wardNo: 'wardNo2'),
+Patient(name: 'name3', wardNo: 'wardNo3'),
+Patient(name: 'name4', wardNo: 'wardNo4'),
+Patient(name: 'name5', wardNo: 'wardNo5'),
+Patient(name: 'name6', wardNo: 'wardNo6'),
 
   ];
 
@@ -37,50 +36,93 @@ Patient('name3', 'wardNo3'),
         onPressed: () {},
       child: Icon(Icons.add,),
       ),
-      body: SafeArea( 
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-        
-             SizedBox(height: 30,),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                    children: 
-                    
-                    patients.map(
-                          (e) => 
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+
+       body: 
+       ListView.builder(
+        itemCount: patients.length, 
+       itemBuilder: ((ctx, i) => 
+       Container(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             
                             decoration: BoxDecoration(
                               color: Color.fromARGB(255, 237, 224, 184),
                               borderRadius: BorderRadius.circular(13),
                              
                             ),
-                            child: ListTile(
+        child: PatientList(patients[i].name, patients[i].wardNo))
+       ),
+       )
+
+
+
+
+
+
+       
+      // GridView.builder(
+      //   padding: EdgeInsets.all(10),
+      //   itemCount: patients.length,
+      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //     crossAxisCount: 3,
+      //   // childAspectRatio: 3/2,
+      //   // crossAxisSpacing: 10,
+      //   // mainAxisSpacing: 5
+      //   ), 
+      //   itemBuilder: ((ctx, i) => 
+        
+      //      PatientList(patients[i].name,
+      //     patients[i].wardNo
+      //     )
+        
+        
+      //   ),
+      //   ),
+
+
+      // body: SafeArea( 
+      //   child: SingleChildScrollView(
+      //     child: Column(
+      //       children: [
+        
+      //        SizedBox(height: 30,),
+      //         Column(
+      //           mainAxisAlignment: MainAxisAlignment.center,
+      //               children: 
+                    
+      //               patients.map(
+      //                     (e) => 
+      //                     Container(
+      //                       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            
+      //                       decoration: BoxDecoration(
+      //                         color: Color.fromARGB(255, 237, 224, 184),
+      //                         borderRadius: BorderRadius.circular(13),
+                             
+      //                       ),
+      //                       child: ListTile(
                               
-                              title: Text(
-                                e.name,
-                                style: TextStyle(fontSize: 20),
-                              ),
-                              subtitle: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(e.wardNo.toString()),
+      //                         title: Text(
+      //                           e.name,
+      //                           style: TextStyle(fontSize: 20),
+      //                         ),
+      //                         subtitle: Column(
+      //                           mainAxisAlignment: MainAxisAlignment.start,
+      //                           crossAxisAlignment: CrossAxisAlignment.start,
+      //                           children: <Widget>[
+      //                             Text(e.wardNo.toString()),
                                 
                                
-                                ],
-                              ),
+      //                           ],
+      //                         ),
                               
-                            ),
-                          ),
-                        )
-                        .toList() ),
-            ],
-          )
-        ),
-      ),
+      //                       ),
+      //                     ),
+      //                   )
+      //                   .toList() ),
+      //       ],
+      //     )
+      //   ),
+      // ),
       
     );
   }
