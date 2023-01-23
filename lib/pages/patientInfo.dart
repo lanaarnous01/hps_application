@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/taskModel.dart';
+import '../models/taskModel.dart';
 
 //addPatient_page
 class patientInfo_page extends StatefulWidget {
@@ -13,19 +13,26 @@ Widget buildHeartRate() {
 }
 
 class _PatientInfoState extends State<patientInfo_page> {
- // final taskList = Task.generateTasks();
- final List<Map<String, dynamic>> gridMap =[
+ 
+ final List<Map<String, dynamic>> categories =[
   {
     "title":"heart rate",
-    "numberr": "9",
+    "numberr": '9',
+    "icons": Icon(Icons.monitor_heart)
     
   },
   {"title": "Blood pressure",
-  "numberr": "9"},
+  "numberr": "9",
+  "icons": Icon(Icons.time_to_leave)
+  },
   {"title": "Fever",
-  "numberr": "9"},
+  "numberr": "9",
+  "icons": Icon(Icons.monitor_heart)
+  },
   {"title": "data",
-  "numberr": "9"},
+  "numberr": "9",
+  "icons": Icon(Icons.monitor_heart)
+  },
   
 
 
@@ -48,10 +55,10 @@ class _PatientInfoState extends State<patientInfo_page> {
                      bottomRight: Radius.circular(40),
                        bottomLeft: Radius.circular(40)
                       ),
-               // color: new Color(0xffF5591F),
+               
                 gradient: LinearGradient(
-                  begin: Alignment.topCenter, //center
-                  end: Alignment.bottomCenter, //bottomright
+                  begin: Alignment.topCenter, 
+                  end: Alignment.bottomCenter, 
                   colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
                 )),
             child: Center(
@@ -77,31 +84,7 @@ class _PatientInfoState extends State<patientInfo_page> {
               ),
             ),
           ),
-            // Stack(
-            //   children: [
-            //     Container(height: MediaQuery.of(context).size.height - 20,
-            //     width: MediaQuery.of(context).size.width,
-            //    color: Color(0xFFF3B2B7), 
-            //     ),
-            //     Positioned(
-            //       top: MediaQuery.of(context).size.height /8,
-            //       child: Container(
-            //         height: MediaQuery.of(context).size.height /1,
-            //         width: MediaQuery.of(context).size.width,
-            //         decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.only(topRight: Radius.circular(40),
-            //           topLeft: Radius.circular(40)),
-            //           color: Colors.white
-            //         ),
-                    
-            //       ),
-                  
-            //       ),
-                  
-                
-
-            //   ],
-            // ),
+            
               Container(
                 child: Stack(
                   children: [
@@ -166,7 +149,7 @@ class _PatientInfoState extends State<patientInfo_page> {
                     mainAxisSpacing: 12,
                     mainAxisExtent: 150
                     ), 
-                    itemCount: gridMap.length,
+                    itemCount: categories.length,
                     itemBuilder: ( (_, index) {
                       return Container(
                        
@@ -185,11 +168,11 @@ class _PatientInfoState extends State<patientInfo_page> {
                         child: Column(
                           children: [
                             Padding(padding: EdgeInsets.all(8),
-                            child: Column(
+                            child: Column( //column
                               children: [
-                                
+                                categories.elementAt(index)['icons'],
                                 Text(
-                      "${gridMap.elementAt(index)['title']}",
+                      "${categories.elementAt(index)['title']}",
                       style: Theme.of(context).textTheme.subtitle1!.merge(
                             const TextStyle(
                               fontWeight: FontWeight.w700,
@@ -201,71 +184,76 @@ class _PatientInfoState extends State<patientInfo_page> {
                     
                     SizedBox(height: 30,),
                      Text(
-                      "${gridMap.elementAt(index)['numberr']}",
+                      "${categories.elementAt(index)['numberr']}",
                       style: Theme.of(context).textTheme.subtitle2!.merge(
                             TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.w700,
-                              color:  Colors.white // Colors.grey.shade500,
+                              color:  Colors.white 
                             ),
                           ),
                     ),
+                    
                               ],
                             ),
                             ),
-                            
-                          ],
-                        ),
-                        
-                      );
+                          ], ), );
+                      
                     }
                     ),
                     ),
+              ),
+              //wrap with ink well (button)
+              Center(
+                child: Container(
+                  
+                  width: 150,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0.0, 20),
+                        blurRadius: 30,
+                        color: Colors.black
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(22),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                        height: 50,
+                        width: 110,
+                         child: Text('Activity', 
+                         style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                         ),
+                         
+                        
+                        ),
+                        decoration: BoxDecoration(color: Colors.blue,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(95),
+                        topLeft: Radius.circular(95),
+                        bottomRight: Radius.circular(240)
+                        )
+                        ),
+                      ),
+                      Icon(Icons.access_time_outlined, size: 30, )
+                    ],
+                  ),
+                  
+                ),
               ),
             ],
           ),
         ),
       ),
     
-    //     body: ListView(padding: EdgeInsets.all(32), children: [
-    //   Center(
-    //     child: Container(
-    //       decoration: BoxDecoration(color: Colors.white10),
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         children: [
-    //           SizedBox(
-    //             height: 50,
-    //             width: 10,
-    //           ),
-    //           Text(
-    //             'Patient Information',
-    //             style: TextStyle(
-    //                 color: Colors.black,
-    //                 fontSize: 26,
-    //                 fontWeight: FontWeight.bold),
-    //           )
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    //   SizedBox(
-    //     height: 50,
-    //   ),
-    //   Container(
-    //     padding: EdgeInsets.all(15),
-    //     decoration: BoxDecoration(
-          
-    //     ),
-    //     child: Text(
-    //       'Tasks',
-    //       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-    //     ),
-    //   ),
-    //   SizedBox(
-    //     height: 50,
-    //   ),
-    // ]),
+  
     );
   }
 }

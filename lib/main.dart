@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
-import 'addPatient_page.dart';
-import 'register_page.dart';
-import 'option_page.dart';
-import 'loginNurse_page.dart';
-import 'patientInfo.dart';
+import 'pages/login_page.dart';
+import 'pages/addPatient_page.dart';
+import 'pages/register_page.dart';
+import 'pages/option_page.dart';
+import 'pages/loginNurse_page.dart';
+import 'pages/patientInfo.dart';
+import 'pages/patientList.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
+      // PatientListPage(),
           patientInfo_page(),
           //LoginNursePage(),
           //Option_page(),
