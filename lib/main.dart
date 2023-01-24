@@ -6,7 +6,8 @@ import 'pages/option_page.dart';
 import 'pages/loginNurse_page.dart';
 import 'pages/patientInfo.dart';
 import 'pages/patientList.dart';
-
+import 'package:provider/provider.dart';
+import './providers/patients_providers.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -17,16 +18,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:
-       PatientListPage(),
-         // patientInfo_page(),
-          //LoginNursePage(),
-          //Option_page(),
-         // RegisterPage(),
-      // addPatient_page(),
-      //  LoginPage(),
+    return ChangeNotifierProvider(
+      //if smth changes in Patients(), wont change anything in material app, it will only rebuild listeners
+      create: (context) => Patients(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home:
+         PatientListPage(),
+           // patientInfo_page(),
+            //LoginNursePage(),
+            //Option_page(),
+           // RegisterPage(),
+        // addPatient_page(),
+        //  LoginPage(),
+      ),
     );
   }
 }

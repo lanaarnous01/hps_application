@@ -12,9 +12,14 @@ class PatientList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      
       title: Text(name),
       subtitle: Text(wardNo),
-      
+      // trailing: GestureDetector(
+      //   onTap: () {
+          
+      //   },
+      // ),
     );
   }
 }

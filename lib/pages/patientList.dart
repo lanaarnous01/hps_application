@@ -45,7 +45,7 @@ Patient(name: 'name6', wardNo: 'wardNo6'),
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 237, 224, 184),
+                             // color: Color.fromARGB(255, 237, 224, 184),
                               borderRadius: BorderRadius.circular(13),
                              
                             ),
@@ -58,7 +58,7 @@ Patient(name: 'name6', wardNo: 'wardNo6'),
 
 
 
-       
+
       // GridView.builder(
       //   padding: EdgeInsets.all(10),
       //   itemCount: patients.length,
