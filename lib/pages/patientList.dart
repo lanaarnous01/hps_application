@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/listModel.dart';
 import '../widgets/patientList_widget.dart';
+import 'package:provider/provider.dart';
+import '../providers/patients_providers.dart';
+
 class PatientListPage extends StatefulWidget {
   const PatientListPage({Key? key}) : super(key: key);
 
@@ -8,19 +11,22 @@ class PatientListPage extends StatefulWidget {
 }
 
 class _PatientListPageState extends State<PatientListPage> {
-  final List <Patient> patients = [
-Patient(name: 'name', wardNo: 'wardNo'),
-Patient(name: 'name2', wardNo: 'wardNo2'),
-Patient(name: 'name3', wardNo: 'wardNo3'),
-Patient(name: 'name4', wardNo: 'wardNo4'),
-Patient(name: 'name5', wardNo: 'wardNo5'),
-Patient(name: 'name6', wardNo: 'wardNo6'),
+//   final List <Patient> patients = [
+// Patient(name: 'name', wardNo: 'wardNo'),
+// Patient(name: 'name2', wardNo: 'wardNo2'),
+// Patient(name: 'name3', wardNo: 'wardNo3'),
+// Patient(name: 'name4', wardNo: 'wardNo4'),
+// Patient(name: 'name5', wardNo: 'wardNo5'),
+// Patient(name: 'name6', wardNo: 'wardNo6'),
 
-  ];
+//   ];
 
   
 
   Widget build(BuildContext context) {
+    //gets junk data from patient list provider
+    final patientsData = Provider.of<Patients>(context);
+    final patients = patientsData.patients;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -45,11 +51,14 @@ Patient(name: 'name6', wardNo: 'wardNo6'),
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             
                             decoration: BoxDecoration(
-                             // color: Color.fromARGB(255, 237, 224, 184),
+                            
                               borderRadius: BorderRadius.circular(13),
                              
                             ),
-        child: PatientList(patients[i].name, patients[i].wardNo))
+        child: PatientList(
+          patients[i].name, patients[i].wardNo
+        
+          ))
        ),
        )
 
