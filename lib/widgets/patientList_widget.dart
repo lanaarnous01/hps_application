@@ -17,8 +17,12 @@ class PatientList extends StatelessWidget {
       subtitle: Text(wardNo),
       
         onTap: () {
+          //pushNamed
          Navigator.of(context).push(
-          MaterialPageRoute(builder: ((context) => patientInfo_page())));
+         MaterialPageRoute(builder: ((context) => patientInfo_page(name))
+         )
+       //  patientInfo_page.routeName,arguments: name
+         );
         },
       
     );

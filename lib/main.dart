@@ -25,6 +25,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home:
          PatientListPage(),
+        //  routes: {
+        //   patientInfo_page.routeName:(context) => patientInfo_page(),
+        //  },
+
+
            // patientInfo_page(),
             //LoginNursePage(),
             //Option_page(),

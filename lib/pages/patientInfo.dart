@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hps_application/widgets/patientList_widget.dart';
 import '../models/taskModel.dart';
+import 'package:provider/provider.dart';
+import '../providers/patients_providers.dart';
+import '../widgets/patientList_widget.dart';
 
-
-class patientInfo_page extends StatefulWidget {
-  const patientInfo_page({Key? key}) : super(key: key);
-
-  State<patientInfo_page> createState() => _PatientInfoState();
-}
-
-Widget buildHeartRate() {
-  return Text('Heart Rate');
-}
-
-class _PatientInfoState extends State<patientInfo_page> {
+class patientInfo_page extends StatelessWidget {
  
- final List<Map<String, dynamic>> categories =[
+final String namee;
+patientInfo_page(this.namee);
+
+//static const routeName = '/patient-info';
+
+
+ final List categories =[
   {
     "title":"heart rate",
     "numberr": '9',
@@ -38,7 +36,10 @@ class _PatientInfoState extends State<patientInfo_page> {
 
 
  ];
+
   Widget build(BuildContext context) {
+    //Changed to stateless, to show names when going next page
+   //final patientName = ModalRoute.of(context).settings.arguments as String;
     return Scaffold(
       
       body: 
@@ -73,7 +74,8 @@ class _PatientInfoState extends State<patientInfo_page> {
                     height: 40,
                     width: 300,
                     child: Text(
-                      'Patient Information',
+                      
+                     'Patient Information',
                       style: TextStyle(
                           fontSize: 28,
                           color: Colors.white,
@@ -104,13 +106,14 @@ class _PatientInfoState extends State<patientInfo_page> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Name',
+                          Text(namee,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white
                           ),
                           ),
+                         
                           SizedBox(height: 10,),
                           Text('Age',
                           style: TextStyle(
@@ -210,13 +213,13 @@ class _PatientInfoState extends State<patientInfo_page> {
                   
                   width: 150,
                   decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0.0, 20),
-                        blurRadius: 30,
-                        color: Colors.black
-                      ),
-                    ],
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     offset: Offset(0.0, 20),
+                    //     blurRadius: 30,
+                    //     color: Colors.black
+                    //   ),
+                    // ],
                     borderRadius: BorderRadius.circular(22),
                     color: Colors.white,
                   ),
@@ -257,4 +260,8 @@ class _PatientInfoState extends State<patientInfo_page> {
   
     );
   }
+}
+
+Widget buildHeartRate() {
+  return Text('Heart Rate');
 }
