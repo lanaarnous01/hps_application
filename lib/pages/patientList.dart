@@ -47,18 +47,22 @@ class _PatientListPageState extends State<PatientListPage> {
        ListView.builder(
         itemCount: patients.length, 
        itemBuilder: ((ctx, i) => 
-       Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                            
-                            decoration: BoxDecoration(
-                            
-                              borderRadius: BorderRadius.circular(13),
-                             
-                            ),
-        child: PatientList(
-          patients[i].name, patients[i].wardNo
-        
-          ))
+       // provider added
+       Provider(
+        create: (context) => patients[i],
+         child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              
+                              decoration: BoxDecoration(
+                              
+                                borderRadius: BorderRadius.circular(13),
+                               
+                              ),
+          child: PatientList(
+            patients[i].name, patients[i].wardNo
+          
+            )),
+       )
        ),
        )
 

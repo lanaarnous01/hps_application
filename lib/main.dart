@@ -21,13 +21,17 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       //if smth changes in Patients(), wont change anything in material app, it will only rebuild listeners
       create: (context) => Patients(),
+
+      //Alternative Provider syntaxes
+      //changed to change notifier provider.value
+      //value: Patients(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:
          PatientListPage(),
-        //  routes: {
-        //   patientInfo_page.routeName:(context) => patientInfo_page(),
-        //  },
+         routes: {
+          patientInfo_page.routeName:(context) => patientInfo_page(),
+         },
 
 
            // patientInfo_page(),

@@ -7,10 +7,10 @@ import '../widgets/patientList_widget.dart';
 
 class patientInfo_page extends StatelessWidget {
  
-final String namee;
-patientInfo_page(this.namee);
+// final String namee;
+// patientInfo_page(this.namee);
 
-//static const routeName = '/patient-info';
+static const routeName = '/patient-info';
 
 
  final List categories =[
@@ -39,7 +39,9 @@ patientInfo_page(this.namee);
 
   Widget build(BuildContext context) {
     //Changed to stateless, to show names when going next page
-   //final patientName = ModalRoute.of(context).settings.arguments as String;
+   final patientName = ModalRoute.of(context)!.settings.arguments as String;
+    // final loadedPatient = Provider.of<Patients>(context).findbyId(patientName);
+   final loadedPatient = Provider.of<Patients>(context).patients.firstWhere((prod) => prod.name == patientName); 
     return Scaffold(
       
       body: 
@@ -106,7 +108,7 @@ patientInfo_page(this.namee);
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(namee,
+                          Text( loadedPatient.name,       //patientName,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -115,7 +117,7 @@ patientInfo_page(this.namee);
                           ),
                          
                           SizedBox(height: 10,),
-                          Text('Age',
+                          Text(loadedPatient.wardNo,          //'Age',
                           style: TextStyle(
                             fontSize: 18, 
                             fontWeight: FontWeight.bold,

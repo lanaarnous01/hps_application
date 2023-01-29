@@ -1,3 +1,4 @@
+import 'package:hps_application/models/listModel.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 //import 'package:hps_application/pages/patientList.dart';
@@ -11,20 +12,26 @@ class PatientList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      
-      title: Text(name),
-      subtitle: Text(wardNo),
-      
-        onTap: () {
-          //pushNamed
-         Navigator.of(context).push(
-         MaterialPageRoute(builder: ((context) => patientInfo_page(name))
-         )
-       //  patientInfo_page.routeName,arguments: name
-         );
-        },
-      
+    // consumer added 
+    // consumer is for fav (might remove)
+    return Consumer<Patient>(
+      builder: (context, value, child) => 
+       ListTile(
+        
+        title: Text(name),
+        subtitle: Text(wardNo),
+        
+          onTap: () {
+            //pushNamed
+           Navigator.of(context).pushNamed(
+          //  MaterialPageRoute(builder: ((context) => patientInfo_page(name))
+          //  )
+           patientInfo_page.routeName,arguments: name
+       
+           );
+          },
+        
+      ),
     );
   }
 }

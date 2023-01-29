@@ -14,4 +14,10 @@ Patient(name: 'name6', wardNo: 'wardNo6'),
     return [..._patients];
   }
 }
+
+// Patient findbyId (String name){
+//   return _patients.firstWhere((prod) => prod.name == name); 
+// }
+
+
  
