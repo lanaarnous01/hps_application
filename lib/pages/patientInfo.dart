@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hps_application/pages/history_page.dart';
+import 'package:hps_application/providers/history.dart';
 import 'package:hps_application/widgets/patientList_widget.dart';
 import '../models/taskModel.dart';
 import 'package:provider/provider.dart';
@@ -210,48 +212,57 @@ static const routeName = '/patient-info';
                     ),
               ),
               //wrap with ink well (button)
-              Center(
-                child: Container(
-                  
-                  width: 150,
-                  decoration: BoxDecoration(
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     offset: Offset(0.0, 20),
-                    //     blurRadius: 30,
-                    //     color: Colors.black
-                    //   ),
-                    // ],
-                    borderRadius: BorderRadius.circular(22),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                        height: 50,
-                        width: 110,
-                         child: Text('Activity', 
-                         style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white
-                         ),
-                         
-                        
+              InkWell(
+                onTap:() {
+                  //navigation push
+                  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const HistoryPage()),
+  );
+
+
+
+                  // Provider.of<History>(context, listen: false).addHistory(
+                    
+                  // );
+                },
+                child: Center(
+                  child: Container(
+                    
+                    width: 150,
+                    decoration: BoxDecoration(
+                     
+                      borderRadius: BorderRadius.circular(22),
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                          height: 50,
+                          width: 110,
+                           child: Text('Activity', 
+                           style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                           ),
+                           
+                          
+                          ),
+                          decoration: BoxDecoration(color: Colors.amberAccent,//Colors.blue,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(95),
+                          topLeft: Radius.circular(95),
+                          bottomRight: Radius.circular(240)
+                          )
+                          ),
                         ),
-                        decoration: BoxDecoration(color: Colors.blue,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(95),
-                        topLeft: Radius.circular(95),
-                        bottomRight: Radius.circular(240)
-                        )
-                        ),
-                      ),
-                      Icon(Icons.access_time_outlined, size: 30, )
-                    ],
+                        Icon(Icons.access_time_outlined, size: 30, color: Colors.amberAccent, )
+                      ],
+                    ),
+                    
                   ),
-                  
                 ),
               ),
             ],

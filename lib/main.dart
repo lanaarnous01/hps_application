@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hps_application/providers/history.dart';
 import 'pages/login_page.dart';
 import 'pages/addPatient_page.dart';
 import 'pages/register_page.dart';
@@ -18,13 +19,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      //if smth changes in Patients(), wont change anything in material app, it will only rebuild listeners
-      create: (context) => Patients(),
+    //change notifier provider
+    //create: (context) => Patients(),
 
-      //Alternative Provider syntaxes
-      //changed to change notifier provider.value
-      //value: Patients(),
+    //multi provider added 
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => Patients(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => History(),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:
@@ -32,8 +39,8 @@ class MyApp extends StatelessWidget {
          routes: {
           patientInfo_page.routeName:(context) => patientInfo_page(),
          },
-
-
+    
+    
            // patientInfo_page(),
             //LoginNursePage(),
             //Option_page(),
