@@ -25,12 +25,14 @@ class MyApp extends StatelessWidget {
     //multi provider added 
     return MultiProvider(
       providers: [
+        // each class in provider must be added
         ChangeNotifierProvider(
           create: (context) => Patients(),
         ),
         ChangeNotifierProvider(
           create: (context) => History(),
-        )
+        ),
+        ChangeNotifierProvider(create: (context) => Categories())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
          PatientListPage(),
          routes: {
           patientInfo_page.routeName:(context) => patientInfo_page(),
+        addPatient_page.routeName:(context) => addPatient_page(),
+         // EditProductScreen.routeName: (ctx) => EditProductScreen(),
          },
     
     

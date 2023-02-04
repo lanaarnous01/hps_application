@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hps_application/pages/addPatient_page.dart';
 import '../models/listModel.dart';
 import '../widgets/patientList_widget.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,9 @@ class _PatientListPageState extends State<PatientListPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amber,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => addPatient_page()));
+        },
       child: Icon(Icons.add,),
       ),
 

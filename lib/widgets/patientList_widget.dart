@@ -20,7 +20,9 @@ class PatientList extends StatelessWidget {
         
         title: Text(name),
         subtitle: Text(wardNo),
-        
+        trailing: IconButton(onPressed: (() {
+          
+        }), icon: Icon(Icons.delete)),
           onTap: () {
             //pushNamed
            Navigator.of(context).pushNamed(

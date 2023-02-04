@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hps_application/models/listModel.dart';
 import 'package:hps_application/pages/history_page.dart';
-import 'package:hps_application/providers/history.dart';
-import 'package:hps_application/widgets/patientList_widget.dart';
-import '../models/taskModel.dart';
+//import 'package:hps_application/providers/history.dart';
+//import 'package:hps_application/widgets/patientList_widget.dart';
+//import '../models/taskModel.dart';
 import 'package:provider/provider.dart';
 import '../providers/patients_providers.dart';
-import '../widgets/patientList_widget.dart';
+//import '../widgets/patientList_widget.dart';
 
-class patientInfo_page extends StatelessWidget {
+class patientInfo_page extends StatefulWidget {
  
 // final String namee;
 // patientInfo_page(this.namee);
 
 static const routeName = '/patient-info';
 
+  @override
+  State<patientInfo_page> createState() => _patientInfo_pageState();
+}
 
+class _patientInfo_pageState extends State<patientInfo_page> {
  final List categories =[
   {
     "title":"heart rate",
@@ -24,11 +29,11 @@ static const routeName = '/patient-info';
   },
   {"title": "Blood pressure",
   "numberr": "9",
-  "icons": Icon(Icons.time_to_leave)
+  "icons": Icon(Icons.access_alarm_sharp)
   },
   {"title": "Fever",
   "numberr": "9",
-  "icons": Icon(Icons.monitor_heart)
+  "icons": Icon(Icons.thermostat)
   },
   {"title": "data",
   "numberr": "9",
@@ -38,12 +43,28 @@ static const routeName = '/patient-info';
 
 
  ];
+ // fix to category
+//var _editedCategory = Patient(name: '');
+ final _form = GlobalKey<FormState>();
+
+ void _saveForm(){
+  _form.currentState?.save(); //? not sure
+ }
 
   Widget build(BuildContext context) {
     //Changed to stateless, to show names when going next page
+    //back to stetfull to save ny updates
    final patientName = ModalRoute.of(context)!.settings.arguments as String;
     // final loadedPatient = Provider.of<Patients>(context).findbyId(patientName);
    final loadedPatient = Provider.of<Patients>(context).patients.firstWhere((prod) => prod.name == patientName); 
+   final patientsData = Provider.of<Patients>(context);
+    final patients = patientsData.patients;
+  //  final categoryName = ModalRoute.of(context)!.settings.arguments as String;
+  // final loadedCategory = Provider.of(context).categories.firstWhere((cat) => cat.title == categoryName);
+  //  final categoriesData = Provider.of<Categories>(context);
+   final categoriesData = Provider.of<Categories>(context);
+   final categories = categoriesData.categories;
+   
     return Scaffold(
       
       body: 
@@ -104,9 +125,10 @@ static const routeName = '/patient-info';
                     ),
                      child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                     
                       children: [
                          Icon(Icons.person),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 50,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -149,7 +171,7 @@ static const routeName = '/patient-info';
               Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
+                 // physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -178,9 +200,19 @@ static const routeName = '/patient-info';
                             Padding(padding: EdgeInsets.all(8),
                             child: Column( //column
                               children: [
-                                categories.elementAt(index)['icons'],
+                                
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(right: 10),
+                                    child:  
+                                    categories[index].icons,
+                                    //categories.elementAt(index)['icons'],
+                                    ),
                                 Text(
-                      "${categories.elementAt(index)['title']}",
+                             
+                  categories[index].title,
+                    // "${categories.elementAt(index)['title']}",
                       style: Theme.of(context).textTheme.subtitle1!.merge(
                             const TextStyle(
                               fontWeight: FontWeight.w700,
@@ -189,10 +221,13 @@ static const routeName = '/patient-info';
 
                           ),
                     ),
+                   
+                    ],),
                     
-                    SizedBox(height: 30,),
+                    SizedBox(height: 10,),
                      Text(
-                      "${categories.elementAt(index)['numberr']}",
+                      categories[index].numberr,
+                     // "${categories.elementAt(index)['numberr']}",
                       style: Theme.of(context).textTheme.subtitle2!.merge(
                             TextStyle(
                               fontSize: 40,
@@ -201,9 +236,35 @@ static const routeName = '/patient-info';
                             ),
                           ),
                     ),
-                    
+                     
                               ],
                             ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 120, ),
+                              child: 
+                             IconButton(
+                              onPressed: (() {
+                               showModalBottomSheet(context: context, 
+                               isScrollControlled: true,
+                               builder: ((BuildContext context) {
+                                 BorderRadius.only(topLeft: Radius.circular(25));
+                                 
+                                 return Padding(
+                                  
+                                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),    //const EdgeInsets.all(10),
+                                   child: 
+                                    Form(
+                                    //  key: _form,
+                                      child: TextFormField(
+                                  decoration: InputDecoration(labelText: ('Title')),
+                                  keyboardType: TextInputType.number,
+                                ))
+                                 
+                                 );
+                               }));
+                                
+                              }), icon: Icon(Icons.edit))
                             ),
                           ], ), );
                       
@@ -219,9 +280,6 @@ static const routeName = '/patient-info';
     context,
     MaterialPageRoute(builder: (context) => const HistoryPage()),
   );
-
-
-
                   // Provider.of<History>(context, listen: false).addHistory(
                     
                   // );
@@ -275,6 +333,4 @@ static const routeName = '/patient-info';
   }
 }
 
-Widget buildHeartRate() {
-  return Text('Heart Rate');
-}
+

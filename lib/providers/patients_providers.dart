@@ -15,6 +15,29 @@ Patient(name: 'name6', wardNo: 'wardNo6'),
   }
 }
 
+
+class Categories with ChangeNotifier{
+  List <Category> _categories = [
+    Category(
+      title: 'Heart Rate', 
+      numberr: '9', 
+      icons: Icon(Icons.monitor_heart_outlined)),
+    Category(
+      title: 'Blood Pressure', 
+      numberr: '98', 
+      icons: Icon(Icons.access_alarm_sharp) ),
+    Category(
+      title: 'Fever',
+      numberr: '36',
+      icons: Icon(Icons.thermostat)
+    )
+
+  ];
+List <Category> get categories{
+  return[..._categories];
+}
+}
+
 // Patient findbyId (String name){
 //   return _patients.firstWhere((prod) => prod.name == name); 
 // }

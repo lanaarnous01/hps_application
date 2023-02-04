@@ -4,5 +4,15 @@ import 'package:flutter/foundation.dart';
 class Patient {
   final name;
   final wardNo;
-  Patient({this.name, this.wardNo});
+  Patient({
+   @required this.name, 
+   @required  this.wardNo});
+}
+
+class Category{
+
+  final title;
+  final numberr;
+  final icons;
+  Category({this.title, this.numberr, this.icons});
 }
