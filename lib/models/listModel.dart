@@ -4,9 +4,12 @@ import 'package:flutter/foundation.dart';
 class Patient {
   final name;
   final wardNo;
+  //final id;
   Patient({
    @required this.name, 
-   @required  this.wardNo});
+   @required  this.wardNo,
+  // this.id
+   });
 }
 
 class Category{

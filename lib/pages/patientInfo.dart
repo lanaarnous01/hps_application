@@ -7,6 +7,8 @@ import 'package:hps_application/pages/history_page.dart';
 import 'package:provider/provider.dart';
 import '../providers/patients_providers.dart';
 //import '../widgets/patientList_widget.dart';
+import '../pages/addPatient_page.dart';
+
 
 class patientInfo_page extends StatefulWidget {
  
@@ -65,6 +67,19 @@ class _patientInfo_pageState extends State<patientInfo_page> {
    final categoriesData = Provider.of<Categories>(context);
    final categories = categoriesData.categories;
    
+   var _isInit = true;
+
+   void didChangeDependencies(){
+    if (_isInit){
+      //final patientId = ModalRoute.of(context)!.settings.arguments as String;
+      final patient = loadedPatient;
+       
+
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+   };
+
     return Scaffold(
       
       body: 
@@ -255,7 +270,7 @@ class _patientInfo_pageState extends State<patientInfo_page> {
                                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),    //const EdgeInsets.all(10),
                                    child: 
                                     Form(
-                                    //  key: _form,
+                                    
                                       child: TextFormField(
                                   decoration: InputDecoration(labelText: ('Title')),
                                   keyboardType: TextInputType.number,
@@ -264,9 +279,11 @@ class _patientInfo_pageState extends State<patientInfo_page> {
                                  );
                                }));
                                 
-                              }), icon: Icon(Icons.edit))
+                              }), icon: Icon(Icons.edit)
+                              )
                             ),
-                          ], ), );
+                          ],),
+                           );
                       
                     }
                     ),

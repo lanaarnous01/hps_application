@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../providers/patients_providers.dart';
+import 'package:provider/provider.dart';
 import '../models/listModel.dart';
 //addPatient_page
 class addPatient_page extends StatefulWidget {
-  static const routeName = '/editPatient';
+  static const routeName = '/editPatient'; //change to add
   const addPatient_page({Key? key}) : super(key: key);
 
   State<addPatient_page> createState() => _AddPageState();
@@ -16,9 +17,18 @@ class _AddPageState extends State<addPatient_page> {
   var _edited = Patient(name: '', wardNo: '' );
 
 void _saveForm(){
+  final isValid = _form.currentState!.validate();
+  if (!isValid){
+    return;
+  }
    _form.currentState!.save();
-   print(_edited.name);
-   print(_edited.wardNo);
+   //print in console
+  //  print(_edited.name);
+  //  print(_edited.wardNo);
+
+  //Adding patient in the patient list
+  Provider.of<Patients>(context, listen: false).addPatient(_edited);
+  Navigator.of(context).pop();
 }
   Widget buildName() => TextFormField(
         decoration: InputDecoration(
@@ -28,6 +38,12 @@ void _saveForm(){
               borderSide: BorderSide(color: Colors.red, width: 3)),
           labelText: 'Name',
         ),
+        validator: (value) {
+          if (value!.isEmpty){
+            return 'Please enter name';
+          }
+          return null;
+        },
         onSaved: (value) {
       _edited = Patient(name: value, wardNo: _edited.wardNo);
         },
@@ -59,6 +75,12 @@ void _saveForm(){
               borderSide: BorderSide(color: Colors.red, width: 3)),
           labelText: 'Ward No.',
         ),
+        validator: (value) {
+          if (value!.isEmpty){
+            return 'Please enter Ward Number';
+          }
+          return null;
+        },
         onSaved: (value) {
           _edited = Patient(name: _edited.name, wardNo: value);
         },

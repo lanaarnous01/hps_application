@@ -13,6 +13,22 @@ Patient(name: 'name6', wardNo: 'wardNo6'),
   List <Patient> get patients {
     return [..._patients];
   }
+  void addPatient (Patient patient){
+  final newPatient = 
+  Patient(name: patient.name, wardNo: patient.wardNo, );
+  _patients.add(newPatient);
+  notifyListeners();
+}
+  void updatePatient(String name, Patient newPatient){
+    final patientIndex  =_patients.indexWhere((pat) => pat.name == name);
+    if (patientIndex >=0 ){
+      _patients[patientIndex] = newPatient;
+      notifyListeners();
+    }
+    else{
+      print('...');
+    }
+  }
 }
 
 
@@ -42,5 +58,8 @@ List <Category> get categories{
 //   return _patients.firstWhere((prod) => prod.name == name); 
 // }
 
-
- 
+// void addPatient (Patient patient){
+//   final newPatient = 
+//   Patient(name: patient.name, wardNo: patient.wardNo);
+//   _patients.add(newPatient);
+// }

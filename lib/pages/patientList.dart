@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hps_application/pages/addPatient_page.dart';
-import '../models/listModel.dart';
+// import '../models/listModel.dart';
 import '../widgets/patientList_widget.dart';
 import 'package:provider/provider.dart';
 import '../providers/patients_providers.dart';
@@ -62,7 +62,8 @@ class _PatientListPageState extends State<PatientListPage> {
                                
                               ),
           child: PatientList(
-            patients[i].name, patients[i].wardNo
+            patients[i].name, patients[i].wardNo, 
+            //patients[i].id
           
             )),
        )
