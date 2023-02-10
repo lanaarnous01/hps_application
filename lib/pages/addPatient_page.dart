@@ -14,8 +14,31 @@ class addPatient_page extends StatefulWidget {
 class _AddPageState extends State<addPatient_page> {
 
   final _form = GlobalKey<FormState>();
-  var _edited = Patient(name: '', wardNo: '' );
+  var _edited = Patient(name: '', wardNo: '', id: null );
+  var _initValues = {
+    'name': '',
+    'wardNo.': '',
+  };
+  var _isInit = true;
 
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit){
+      final patientNamee = ModalRoute.of(context)!.settings.arguments as dynamic;
+     if (patientNamee != null)
+     { _edited = Provider.of<Patients>(context, listen: false).findbyId(patientNamee);
+      _initValues = {
+          'name': _edited.name,
+          'wardNo.': _edited.wardNo,
+      };
+        }
+    }
+    _isInit = false;
+
+    
+    super.didChangeDependencies();
+  }
 void _saveForm(){
   final isValid = _form.currentState!.validate();
   if (!isValid){
@@ -27,10 +50,16 @@ void _saveForm(){
   //  print(_edited.wardNo);
 
   //Adding patient in the patient list
+//  if (_edited.name != null ) //name
+//   { Provider.of<Patients>(context, listen: false).updatePatient(_edited.name, _edited);}
+//   else
+
   Provider.of<Patients>(context, listen: false).addPatient(_edited);
   Navigator.of(context).pop();
 }
+ 
   Widget buildName() => TextFormField(
+    initialValue: _initValues['name'],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.redAccent, width: 3)),
@@ -45,7 +74,7 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-      _edited = Patient(name: value, wardNo: _edited.wardNo);
+      _edited = Patient(name: value, wardNo: _edited.wardNo, id: _edited.id);
         },
       );
   Widget buildID() => TextField(
@@ -68,6 +97,7 @@ void _saveForm(){
       );
 
   Widget buildWardNo() => TextFormField(
+    initialValue: _initValues['wardNo.'],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.redAccent, width: 3)),
@@ -82,7 +112,7 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-          _edited = Patient(name: _edited.name, wardNo: value);
+          _edited = Patient(name: _edited.name, wardNo: value, id: _edited.id);
         },
       );
 

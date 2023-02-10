@@ -3,31 +3,37 @@ import '../models/listModel.dart';
 
 class Patients with ChangeNotifier{
   List<Patient> _patients =[
-Patient(name: 'name1', wardNo: 'wardNo'),
-Patient(name: 'name2', wardNo: 'wardNo2'),
-Patient(name: 'name3', wardNo: 'wardNo3'),
-Patient(name: 'name4', wardNo: 'wardNo4'),
-Patient(name: 'name5', wardNo: 'wardNo5'),
-Patient(name: 'name6', wardNo: 'wardNo6'),
+Patient(name: 'name1', wardNo: 'wardNo', id: '1'),
+Patient(name: 'name2', wardNo: 'wardNo2', id: '2'),
+Patient(name: 'name3', wardNo: 'wardNo3', id: '3'),
+Patient(name: 'name4', wardNo: 'wardNo4', id: '4'),
+Patient(name: 'name5', wardNo: 'wardNo5', id: '5'),
+Patient(name: 'name6', wardNo: 'wardNo6', id: '6'),
   ];
   List <Patient> get patients {
     return [..._patients];
   }
+  Patient findbyId (String id){ //name
+  return _patients.firstWhere((prod) => prod.id == id); //prod.name == name
+}
   void addPatient (Patient patient){
   final newPatient = 
-  Patient(name: patient.name, wardNo: patient.wardNo, );
+  Patient(name: patient.name, wardNo: patient.wardNo, id: DateTime.now().toString());
   _patients.add(newPatient);
   notifyListeners();
 }
-  void updatePatient(String name, Patient newPatient){
-    final patientIndex  =_patients.indexWhere((pat) => pat.name == name);
-    if (patientIndex >=0 ){
-      _patients[patientIndex] = newPatient;
+  void updatePatient(String id, Patient newPatient){ //Patient newPatient // String name
+    final patientIndex = _patients.indexWhere((pat) => pat.id == id); //pat.name == name
+    if (patientIndex >=0){
+      _patients[patientIndex] = newPatient; 
       notifyListeners();
+    }else{
+      print('.....');
     }
-    else{
-      print('...');
-    }
+  }
+  void deletePatient(String id){
+    _patients.removeWhere((pat) => pat.id == id);
+    notifyListeners();
   }
 }
 
@@ -53,13 +59,3 @@ List <Category> get categories{
   return[..._categories];
 }
 }
-
-// Patient findbyId (String name){
-//   return _patients.firstWhere((prod) => prod.name == name); 
-// }
-
-// void addPatient (Patient patient){
-//   final newPatient = 
-//   Patient(name: patient.name, wardNo: patient.wardNo);
-//   _patients.add(newPatient);
-// }

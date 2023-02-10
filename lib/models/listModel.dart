@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 
 class Patient {
   final name;
   final wardNo;
-  //final id;
+  final id;
   Patient({
    @required this.name, 
    @required  this.wardNo,
-  // this.id
+   @required this.id
    });
 }
 

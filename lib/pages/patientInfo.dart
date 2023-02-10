@@ -13,7 +13,7 @@ import '../pages/addPatient_page.dart';
 class patientInfo_page extends StatefulWidget {
  
 // final String namee;
-// patientInfo_page(this.namee);
+// patientInfo_page(thisse);
 
 static const routeName = '/patient-info';
 
@@ -47,18 +47,16 @@ class _patientInfo_pageState extends State<patientInfo_page> {
  ];
  // fix to category
 //var _editedCategory = Patient(name: '');
- final _form = GlobalKey<FormState>();
+ //final _form = GlobalKey<FormState>();
 
- void _saveForm(){
-  _form.currentState?.save(); //? not sure
- }
+ 
 
   Widget build(BuildContext context) {
     //Changed to stateless, to show names when going next page
     //back to stetfull to save ny updates
    final patientName = ModalRoute.of(context)!.settings.arguments as String;
     // final loadedPatient = Provider.of<Patients>(context).findbyId(patientName);
-   final loadedPatient = Provider.of<Patients>(context).patients.firstWhere((prod) => prod.name == patientName); 
+   final loadedPatient = Provider.of<Patients>(context).patients.firstWhere((prod) => prod.id == patientName); //prod.name == patientName
    final patientsData = Provider.of<Patients>(context);
     final patients = patientsData.patients;
   //  final categoryName = ModalRoute.of(context)!.settings.arguments as String;
@@ -67,18 +65,18 @@ class _patientInfo_pageState extends State<patientInfo_page> {
    final categoriesData = Provider.of<Categories>(context);
    final categories = categoriesData.categories;
    
-   var _isInit = true;
+  //  var _isInit = true;
 
-   void didChangeDependencies(){
-    if (_isInit){
-      //final patientId = ModalRoute.of(context)!.settings.arguments as String;
-      final patient = loadedPatient;
+  //  void didChangeDependencies(){
+  //   if (_isInit){
+  //     //final patientId = ModalRoute.of(context)!.settings.arguments as String;
+  //     final patient = loadedPatient;
        
 
-    }
-    _isInit = false;
-    super.didChangeDependencies();
-   };
+  //   }
+  //   _isInit = false;
+  //   super.didChangeDependencies();
+  //  };
 
     return Scaffold(
       

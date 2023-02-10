@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hps_application/providers/history.dart';
+import 'package:hps_application/widgets/updateSheet.dart';
 import 'pages/login_page.dart';
 import 'pages/addPatient_page.dart';
 import 'pages/register_page.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
          routes: {
           patientInfo_page.routeName:(context) => patientInfo_page(),
         addPatient_page.routeName:(context) => addPatient_page(),
+        UpdateSheet.routeName:(context) => UpdateSheet(),
          // EditProductScreen.routeName: (ctx) => EditProductScreen(),
          },
     
