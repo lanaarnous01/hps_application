@@ -82,7 +82,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter, //center
                   end: Alignment.bottomCenter, //bottomright
-                  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
+                 colors: [Colors.indigo, Colors.blueAccent],
+                //  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
                 )),
             child: Center(
               child: Column(

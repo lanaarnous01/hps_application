@@ -47,11 +47,11 @@ class MyApp extends StatelessWidget {
          },
     
     
-           // patientInfo_page(),
+          
             //LoginNursePage(),
-            //Option_page(),
+           
            // RegisterPage(),
-        // addPatient_page(),
+        
         //  LoginPage(),
       ),
     );

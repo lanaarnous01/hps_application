@@ -62,9 +62,9 @@ void _saveForm(){
     initialValue: _initValues['name'],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           labelText: 'Name',
         ),
         validator: (value) {
@@ -100,9 +100,9 @@ void _saveForm(){
     initialValue: _initValues['wardNo.'],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           labelText: 'Ward No.',
         ),
         validator: (value) {
@@ -119,9 +119,9 @@ void _saveForm(){
   Widget buildNumber() => TextField(
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           labelText: 'Phone Number',
         ),
       );
@@ -131,8 +131,22 @@ void _saveForm(){
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add Patient'),
-          backgroundColor: Colors.red,
+          elevation: 0,
+         iconTheme: IconThemeData(color: Colors.indigoAccent),
+          backgroundColor: Colors.transparent,
+          title: Text('Add Patient',
+           style: TextStyle(fontSize: 27,
+        fontWeight: FontWeight.bold,
+            color: Colors.indigoAccent// Colors.deepOrangeAccent// Colors.redAccent
+     ),
+          ),
+      centerTitle: true,
+                   shape: Border(
+    bottom: BorderSide(
+      color: Colors.indigoAccent,//Colors.deepOrangeAccent,
+      width: 4
+    )
+  ),
           
         ),
         // backgroundColor: Color.fromARGB(255, 248, 85, 85),
@@ -147,15 +161,16 @@ void _saveForm(){
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(height: 50,),
                     buildName(),
                    // SizedBox(height: 50),
                 //    buildID(),
                     SizedBox(height: 50),
                  //   buildBirthday(),
-                    SizedBox(height: 50),
+                  //  SizedBox(height: 50),
                     buildWardNo(),
                     SizedBox(height: 50),
-                     IconButton(onPressed: _saveForm, icon: Icon(Icons.add))
+                     IconButton(onPressed: _saveForm, icon: Icon(Icons.add_box_sharp, size: 50, color: Colors.blue,))
                   ],
                 ),
               ),

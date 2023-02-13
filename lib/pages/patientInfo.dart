@@ -65,229 +65,116 @@ class _patientInfo_pageState extends State<patientInfo_page> {
    final categoriesData = Provider.of<Categories>(context);
    final categories = categoriesData.categories;
    
-  //  var _isInit = true;
-
-  //  void didChangeDependencies(){
-  //   if (_isInit){
-  //     //final patientId = ModalRoute.of(context)!.settings.arguments as String;
-  //     final patient = loadedPatient;
-       
-
-  //   }
-  //   _isInit = false;
-  //   super.didChangeDependencies();
-  //  };
-
     return Scaffold(
-      
+             appBar: AppBar(
+              // iconTheme: IconThemeData(color: Colors.indigoAccent),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 70,
+        title: Text('Patient Information', 
+        style: TextStyle(fontSize: 27,
+        fontWeight: FontWeight.bold,
+           // color: Colors.indigoAccent// Colors.deepOrangeAccent// Colors.redAccent
+     ),
+        ),
+  //        shape: Border(
+  //   bottom: BorderSide(
+  //     color: Colors.indigoAccent,//Colors.deepOrangeAccent,
+  //     width: 4
+  //   )
+  // ),
+       centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(28), bottomRight: Radius.circular(28)),
+            gradient: LinearGradient(
+              colors: [Colors.indigo, Colors.blueAccent],//[Colors.orange, Colors.deepOrangeAccent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter
+              ),
+          ),
+        ),
+      ),
       body: 
       SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+        child: //singlechildscrollview
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+         SizedBox(height: 30,),
             Container(
-            height: 100,
+              margin: EdgeInsets.all(15),
+            padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.only(
-                     
-                     bottomRight: Radius.circular(40),
-                       bottomLeft: Radius.circular(40)
-                      ),
-               
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter, 
-                  end: Alignment.bottomCenter, 
-                  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
-                )),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              //color: Colors.indigoAccent, //amber accent
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.blue)
+             
+            ),
+             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+             
+              children: [
+                 Icon(Icons.person, color: Colors.indigoAccent,),
+              SizedBox(width: 30,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 30),
-                    alignment: Alignment.topCenter,
-                    height: 40,
-                    width: 300,
-                    child: Text(
-                      
-                     'Patient Information',
-                      style: TextStyle(
-                          fontSize: 28,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  Text( loadedPatient.name,       //patientName,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigoAccent
                   ),
-               
+                  ),
+                 
+                  SizedBox(height: 10,),
+                  Text(loadedPatient.wardNo,          //'Age',
+                  style: TextStyle(
+                    fontSize: 18, 
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigoAccent //white
+                  ),
+                  ),
+                 
                 ],
               ),
+              ],
+             ),
+
             ),
-          ),
-            
+            SizedBox(height: 20,),
+            SizedBox(
+              height: 300,
+              child: 
+              ListView.builder(itemCount: categories.length,
+              itemBuilder: (_, index) => 
               Container(
-                child: Stack(
-                  children: [
-                    Container(margin: EdgeInsets.all(15),
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(20),
-                     
-                    ),
-                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                     
-                      children: [
-                         Icon(Icons.person),
-                      SizedBox(width: 50,),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text( loadedPatient.name,       //patientName,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
-                          ),
-                         
-                          SizedBox(height: 10,),
-                          Text(loadedPatient.wardNo,          //'Age',
-                          style: TextStyle(
-                            fontSize: 18, 
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
-                          ),
-                          SizedBox(height: 10,),
-                          Text('Ward No.',
-                          style: TextStyle(
-                            fontSize: 18, 
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
-                          ),
-
-                        ],
-                      ),
-                      ],
-                     ),
-
-                    ),
-                  ],
-                ),
+               
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.indigoAccent
+              //   gradient: LinearGradient(
+              // colors: [Colors.indigo, Colors.blueAccent],// [new Color(0xffF5591F), new Color(0xffF2861E)],  //[Colors.redAccent, Colors.pink],
+              // begin: Alignment.bottomCenter,
+              // end: Alignment.topCenter
+              // ),
               ),
-             
-
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: GridView.builder(
-                 // physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    mainAxisExtent: 150
-                    ), 
-                    itemCount: categories.length,
-                    itemBuilder: ( (_, index) {
-                      return Container(
-                       
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          
-                         gradient: LinearGradient(
-                  begin: Alignment.topCenter, 
-                  end: Alignment.bottomCenter, 
-                  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
-                ),
-                
-                        
-                         
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.all(8),
-                            child: Column( //column
-                              children: [
-                                
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(padding: EdgeInsets.only(right: 10),
-                                    child:  
-                                    categories[index].icons,
-                                    //categories.elementAt(index)['icons'],
-                                    ),
-                                Text(
-                             
-                  categories[index].title,
-                    // "${categories.elementAt(index)['title']}",
-                      style: Theme.of(context).textTheme.subtitle1!.merge(
-                            const TextStyle(
-                              fontWeight: FontWeight.w700,
-                               color:  Colors.white
-                            ),
-
-                          ),
-                    ),
-                   
-                    ],),
-                    
-                    SizedBox(height: 10,),
-                     Text(
-                      categories[index].numberr,
-                     // "${categories.elementAt(index)['numberr']}",
-                      style: Theme.of(context).textTheme.subtitle2!.merge(
-                            TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w700,
-                              color:  Colors.white 
-                            ),
-                          ),
-                    ),
-                     
-                              ],
-                            ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 120, ),
-                              child: 
-                             IconButton(
-                              onPressed: (() {
-                               showModalBottomSheet(context: context, 
-                               isScrollControlled: true,
-                               builder: ((BuildContext context) {
-                                 BorderRadius.only(topLeft: Radius.circular(25));
-                                 
-                                 return Padding(
-                                  
-                                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),    //const EdgeInsets.all(10),
-                                   child: 
-                                    Form(
-                                    
-                                      child: TextFormField(
-                                  decoration: InputDecoration(labelText: ('Title')),
-                                  keyboardType: TextInputType.number,
-                                ))
-                                 
-                                 );
-                               }));
-                                
-                              }), icon: Icon(Icons.edit)
-                              )
-                            ),
-                          ],),
-                           );
-                      
-                    }
-                    ),
-                    ),
+                 margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+               
+                child: ListTile(
+  //                   shape: RoundedRectangleBorder(
+  //         side: BorderSide(width: 2, color: Colors.indigoAccent), //redAccent
+  //         borderRadius: BorderRadius.circular(20), //10
+  // ),
+                  iconColor: Colors.white,// Colors.indigoAccent,
+                  leading:  categories[index].icons,
+                  title: Text(categories[index].title, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),), 
+                  trailing: Text(categories[index].numberr, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
+                  ),
+              )
               ),
-              //wrap with ink well (button)
+            ),
               InkWell(
                 onTap:() {
                   //navigation push
@@ -296,15 +183,15 @@ class _patientInfo_pageState extends State<patientInfo_page> {
     MaterialPageRoute(builder: (context) => const HistoryPage()),
   );
                   // Provider.of<History>(context, listen: false).addHistory(
-                    
+                  
                   // );
                 },
                 child: Center(
                   child: Container(
-                    
-                    width: 150,
+                  
+                    width: 150, //150
                     decoration: BoxDecoration(
-                     
+                   
                       borderRadius: BorderRadius.circular(22),
                       color: Colors.white,
                     ),
@@ -320,26 +207,28 @@ class _patientInfo_pageState extends State<patientInfo_page> {
                             fontWeight: FontWeight.bold,
                             color: Colors.white
                            ),
-                           
-                          
+                         
+                        
                           ),
-                          decoration: BoxDecoration(color: Colors.amberAccent,//Colors.blue,
+                          decoration: BoxDecoration(
+                            color: Colors.blueAccent,
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(95),
+                            bottomLeft: Radius.circular(95), //95
                           topLeft: Radius.circular(95),
-                          bottomRight: Radius.circular(240)
+                          bottomRight: Radius.circular(240) //240
                           )
                           ),
                         ),
-                        Icon(Icons.access_time_outlined, size: 30, color: Colors.amberAccent, )
+                     
+                        Icon(Icons.arrow_circle_right_outlined, size: 30, color: Colors.blue, )
                       ],
                     ),
-                    
+                  
                   ),
                 ),
               ),
-            ],
-          ),
+             
+          ],
         ),
       ),
     

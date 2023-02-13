@@ -19,17 +19,40 @@ class _PatientListPageState extends State<PatientListPage> {
     final patientsData = Provider.of<Patients>(context);
     final patients = patientsData.patients;
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Patient List',
-        style: TextStyle(fontSize: 30,
-        fontWeight: FontWeight.bold),
-        ),
+       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        backgroundColor: Colors.amber,
+        toolbarHeight: 70,
+        title: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.checklist_sharp, size: 30,),
+              SizedBox(width: 10,),
+              Text('Patient List', 
+              style: TextStyle(fontSize: 30,
+              fontWeight: FontWeight.bold,
+             // color: Colors.deepOrangeAccent// Colors.redAccent
+     ),
+              ),
+            ],
+          ),
+        ),
+    
+       // centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(28), bottomRight: Radius.circular(28)),
+            gradient: LinearGradient(
+              colors: [Colors.indigo, Colors.blueAccent],//[Colors.orange, Colors.deepOrangeAccent],//[Colors.redAccent, Colors.pink],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter
+              ),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.lightBlue,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => addPatient_page()));
         },
@@ -44,11 +67,18 @@ class _PatientListPageState extends State<PatientListPage> {
        Provider(
         create: (context) => patients[i],
          child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                               
-                              decoration: BoxDecoration(
+        decoration: BoxDecoration(
                               
-                                borderRadius: BorderRadius.circular(13),
+       borderRadius: BorderRadius.circular(20), //13
+       
+      
+        // gradient: LinearGradient(
+        //       colors: [new Color(0xffF5591F), new Color(0xffF2861E)],  //[Colors.redAccent, Colors.pink],
+        //       begin: Alignment.bottomCenter,
+        //       end: Alignment.topCenter
+        //       ),
                                
                               ),
           child: PatientList(

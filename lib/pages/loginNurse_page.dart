@@ -60,8 +60,10 @@ class _LoginNursePageState extends State<LoginNursePage> {
                 color: new Color(0xffF5591F),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter, //center
-                  end: Alignment.bottomCenter, //bottomright
-                  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
+                  end: Alignment.bottomCenter, 
+                   colors: [Colors.indigo, Colors.blueAccent],
+                   //bottomright
+                //  colors: [new Color(0xffF5591F), new Color(0xffF2861E)],
                 )),
             child: Center(
               child: Column(
@@ -69,7 +71,7 @@ class _LoginNursePageState extends State<LoginNursePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                      margin: EdgeInsets.only(top: 20),
                     alignment: Alignment.bottomRight,
                     height: 150,
                     width: 250,

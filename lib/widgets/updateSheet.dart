@@ -63,9 +63,9 @@ void _saveForm(){
     initialValue: _initValues['name'],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 3)),
+              borderSide: BorderSide(color: Colors.indigo, width: 3)),
           labelText: 'Name',
         ),
         validator: (value) {
@@ -84,9 +84,9 @@ void _saveForm(){
     initialValue: _initValues['wardNo.'],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 3)),
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
           labelText: 'Ward No.',
         ),
         validator: (value) {
@@ -103,8 +103,22 @@ void _saveForm(){
     return 
     Scaffold(
         appBar: AppBar(
-          title: Text('Add Patient'),
-          backgroundColor: Colors.yellow,
+            iconTheme: IconThemeData(color: Colors.indigoAccent),
+          elevation: 0,
+          title: Text('Update Details', 
+            style: TextStyle(fontSize: 27,
+        fontWeight: FontWeight.bold,
+            color: Colors.indigoAccent// Colors.deepOrangeAccent// Colors.redAccent
+     ),
+          ),
+          backgroundColor: Colors.transparent,
+             centerTitle: true,
+                   shape: Border(
+    bottom: BorderSide(
+      color: Colors.indigoAccent,//Colors.deepOrangeAccent,
+      width: 4
+    )
+  ),
           
         ),
         // backgroundColor: Color.fromARGB(255, 248, 85, 85),
@@ -134,44 +148,6 @@ void _saveForm(){
             ),
           ]),
         ));
-    // IconButton(
-    //                         onPressed: (() {
-    //                          showModalBottomSheet(context: context, 
-    //                          isScrollControlled: true,
-    //                          builder: ((BuildContext context) {
-    //                            BorderRadius.only(topLeft: Radius.circular(25));
-                               
-    //                            return Padding(
-                                
-    //                              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),    //const EdgeInsets.all(10),
-    //                              child: 
-    //                               Form(
-                                  
-    //                                 child: 
-    //                                 Column(
-    //                                   children: [
-    //                                     TextFormField(
-    //                             decoration: InputDecoration(labelText: ('Heart rate')),
-    //                             keyboardType: TextInputType.number,
-    //                           ),
-    //                            TextFormField(
-    //                             decoration: InputDecoration(labelText: ('Blood Pressure')),
-    //                             keyboardType: TextInputType.number,
-    //                           ),
-    //                            TextFormField(
-    //                             decoration: InputDecoration(labelText: ('Fever')),
-    //                             keyboardType: TextInputType.number,
-    //                           ),
-    //                                   ],
-    //                                 ),
-                               
-    //                           )
-                               
-    //                            );
-    //                          })
-    //                          );
-                              
-    //                         }), icon: Icon(Icons.edit)
-    //                         );
+                           
   }
 }

@@ -47,26 +47,32 @@ class _PatientListState extends State<PatientList> {
        Form(
        // key: _form,
          child: ListTile(
-          
-          title: Text(widget.name),
-          subtitle: Text(widget.wardNo),
+          shape: RoundedRectangleBorder(
+    side: BorderSide(width: 2, color: Colors.indigoAccent), //redAccent
+    borderRadius: BorderRadius.circular(10),
+  ),
+          title: Text(widget.name, style: 
+          TextStyle(
+          color:  Colors.indigoAccent, 
+            fontWeight: FontWeight.bold, fontSize: 20),),
+          subtitle: Text(widget.wardNo, style: 
+          TextStyle(color: Colors.indigoAccent,  fontWeight: FontWeight.bold, fontSize: 15),),
+          leading: Icon(Icons.account_circle_rounded, size: 40, color: Colors.indigoAccent, ),
           trailing: Container(
             width: 100,
             child: Row(
               children: [
                  IconButton(
                               onPressed: (() {
-                               // Navigator.of(context).pushNamed(addPatient_page.routeName, arguments: widget.name );
-                           // Navigator.of(context).pushNamed(addPatient_page.routeName, arguments: widget.name);
                            Navigator.of(context).pushNamed(UpdateSheet.routeName, arguments: widget.id);
                              
                               }
-                              ), icon: Icon(Icons.edit)
+                              ), icon: Icon(Icons.edit, color: Colors.indigoAccent, )
                               ),
                 IconButton(onPressed: (() {
                Provider.of<Patients>(context, listen: false).deletePatient(widget.id);
                 }), 
-                icon: Icon(Icons.delete)),
+                icon: Icon(Icons.delete, color: Colors.indigoAccent, )),
                 
               ],
             ),
