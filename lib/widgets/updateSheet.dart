@@ -14,11 +14,13 @@ static const routeName = '/updatePatient';
 class _UpdateSheetState extends State<UpdateSheet> {
   //@override
     final _formm = GlobalKey<FormState>();
-  var _edited = Patient(name: '', wardNo: '', id: null );
+  var _edited = Patient(name: '', wardNo: '', id: null, numberHeart: '', numberPressure: '');
   var _initValues = {
     
     'name': '',
     'wardNo.': '',
+    'numberHeart': '',
+    'numberPressure': ''
   };
   var _isInit = true;
 
@@ -32,6 +34,8 @@ class _UpdateSheetState extends State<UpdateSheet> {
       _initValues = {
           'name': _edited.name,
           'wardNo.': _edited.wardNo,
+          'numberHeart': _edited.numberHeart,
+          'numberPressure': _edited.numberPressure
       };
         }
     }
@@ -75,7 +79,7 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-      _edited = Patient(name: value, wardNo: _edited.wardNo, id: _edited.id);
+      _edited = Patient(name: value, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure);
         },
       );
 
@@ -96,9 +100,50 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-          _edited = Patient(name: _edited.name, wardNo: value, id: _edited.id);
+          _edited = Patient(name: _edited.name, wardNo: value, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure);
         },
       );
+
+      Widget buildHeart() => TextFormField(
+    initialValue: _initValues['numberHeart'],
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.indigo, width: 3)),
+          labelText: 'Heart',
+        ),
+        validator: (value) {
+          if (value!.isEmpty){
+            return 'Please enter Heart rate';
+          }
+          return null;
+        },
+        onSaved: (value) {
+      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: value, numberPressure: _edited.numberPressure);
+        },
+      );
+
+      Widget buildPressure() => TextFormField(
+    initialValue: _initValues['numberPressure'],
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.indigo, width: 3)),
+          labelText: 'Pressure',
+        ),
+        validator: (value) {
+          if (value!.isEmpty){
+            return 'Please enter name';
+          }
+          return null;
+        },
+        onSaved: (value) {
+      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: value);
+        },
+      );
+
   Widget build(BuildContext context) {
     return 
     Scaffold(
@@ -141,6 +186,10 @@ void _saveForm(){
                     SizedBox(height: 50),
                     buildWardNo(),
                     SizedBox(height: 50),
+                    buildHeart(),
+                    SizedBox(height: 50,),
+                    buildPressure(),
+                    SizedBox(height: 50,),
                      IconButton(onPressed: _saveForm, icon: Icon(Icons.add))
                   ],
                 ),

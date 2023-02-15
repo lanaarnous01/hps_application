@@ -10,6 +10,7 @@ import 'pages/patientInfo.dart';
 import 'pages/patientList.dart';
 import 'package:provider/provider.dart';
 import './providers/patients_providers.dart';
+import './widgets/patientInfo_widget.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
           patientInfo_page.routeName:(context) => patientInfo_page(),
         addPatient_page.routeName:(context) => addPatient_page(),
         UpdateSheet.routeName:(context) => UpdateSheet(),
+        PatientInfoWidget.routeName:(context) => PatientInfoWidget(),
          // EditProductScreen.routeName: (ctx) => EditProductScreen(),
          },
     

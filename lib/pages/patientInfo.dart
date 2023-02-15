@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hps_application/models/listModel.dart';
 import 'package:hps_application/pages/history_page.dart';
+import 'package:hps_application/widgets/patientInfo_widget.dart';
 //import 'package:hps_application/providers/history.dart';
 //import 'package:hps_application/widgets/patientList_widget.dart';
 //import '../models/taskModel.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../providers/patients_providers.dart';
 //import '../widgets/patientList_widget.dart';
 import '../pages/addPatient_page.dart';
+import '../models/listModel.dart';
 
 
 class patientInfo_page extends StatefulWidget {
@@ -22,29 +24,29 @@ static const routeName = '/patient-info';
 }
 
 class _patientInfo_pageState extends State<patientInfo_page> {
- final List categories =[
-  {
-    "title":"heart rate",
-    "numberr": '9',
-    "icons": Icon(Icons.monitor_heart)
+//  final List categories =[
+//   {
+//     "title":"heart rate",
+//     "numberr": '9',
+//     "icons": Icon(Icons.monitor_heart)
     
-  },
-  {"title": "Blood pressure",
-  "numberr": "9",
-  "icons": Icon(Icons.access_alarm_sharp)
-  },
-  {"title": "Fever",
-  "numberr": "9",
-  "icons": Icon(Icons.thermostat)
-  },
-  {"title": "data",
-  "numberr": "9",
-  "icons": Icon(Icons.monitor_heart)
-  },
+//   },
+//   {"title": "Blood pressure",
+//   "numberr": "9",
+//   "icons": Icon(Icons.access_alarm_sharp)
+//   },
+//   {"title": "Fever",
+//   "numberr": "9",
+//   "icons": Icon(Icons.thermostat)
+//   },
+//   {"title": "data",
+//   "numberr": "9",
+//   "icons": Icon(Icons.monitor_heart)
+//   },
   
 
 
- ];
+//  ];
  // fix to category
 //var _editedCategory = Patient(name: '');
  //final _form = GlobalKey<FormState>();
@@ -62,6 +64,7 @@ class _patientInfo_pageState extends State<patientInfo_page> {
   //  final categoryName = ModalRoute.of(context)!.settings.arguments as String;
   // final loadedCategory = Provider.of(context).categories.firstWhere((cat) => cat.title == categoryName);
   //  final categoriesData = Provider.of<Categories>(context);
+  
    final categoriesData = Provider.of<Categories>(context);
    final categories = categoriesData.categories;
    
@@ -136,45 +139,94 @@ class _patientInfo_pageState extends State<patientInfo_page> {
                     color: Colors.indigoAccent //white
                   ),
                   ),
-                 
                 ],
               ),
               ],
              ),
 
             ),
-            SizedBox(height: 20,),
-            SizedBox(
-              height: 300,
-              child: 
-              ListView.builder(itemCount: categories.length,
-              itemBuilder: (_, index) => 
-              Container(
+            PatientInfoWidget(),
+          //   Container(
+          //       margin: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+          // height: 50,
+          //   decoration: BoxDecoration(
+          //     //color: Colors.indigoAccent, //amber accent
+          //     borderRadius: BorderRadius.circular(20),
+          //     border: Border.all(color: Colors.blue)
+             
+          //   ),
+          //     child: Row(
+          //       children: [
+          //         Text('${categories.elementAt(0).title}'),
+          //         SizedBox(width: 30,),
+          //         Text(loadedPatient.numberHeart,          //'Age',
+          //         style: TextStyle(
+          //           fontSize: 18, 
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.indigoAccent //white
+          //         ),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          //           Container(
+          //       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+          // //  padding: EdgeInsets.all(20),
+          // height: 50,
+          //   decoration: BoxDecoration(
+          //     color: Colors.indigoAccent, //amber accent
+          //     borderRadius: BorderRadius.circular(20),
+          //    // border: Border.all(color: Colors.blue)
+             
+          //   ),
+          //     child: Row(
+          //       children: [
+          //         Text('${categories.elementAt(1).title}'),
+          //         SizedBox(width: 30,),
+          //         Text(loadedPatient.numberPressure,          //'Age',
+          //         style: TextStyle(
+          //           fontSize: 18, 
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.white
+          //         ),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+           
+  //           SizedBox(
+  //             height: 300,
+  //             child: 
+  //             ListView.builder(itemCount: categories.length,
+  //             itemBuilder: (_, index) => 
+  //             Container(
                
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.indigoAccent
-              //   gradient: LinearGradient(
-              // colors: [Colors.indigo, Colors.blueAccent],// [new Color(0xffF5591F), new Color(0xffF2861E)],  //[Colors.redAccent, Colors.pink],
-              // begin: Alignment.bottomCenter,
-              // end: Alignment.topCenter
-              // ),
-              ),
-                 margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+  //             decoration: BoxDecoration(
+  //                 borderRadius: BorderRadius.circular(15),
+  //                 color: Colors.indigoAccent
+  //             //   gradient: LinearGradient(
+  //             // colors: [Colors.indigo, Colors.blueAccent],// [new Color(0xffF5591F), new Color(0xffF2861E)],  //[Colors.redAccent, Colors.pink],
+  //             // begin: Alignment.bottomCenter,
+  //             // end: Alignment.topCenter
+  //             // ),
+  //             ),
+  //                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                
-                child: ListTile(
-  //                   shape: RoundedRectangleBorder(
-  //         side: BorderSide(width: 2, color: Colors.indigoAccent), //redAccent
-  //         borderRadius: BorderRadius.circular(20), //10
-  // ),
-                  iconColor: Colors.white,// Colors.indigoAccent,
-                  leading:  categories[index].icons,
-                  title: Text(categories[index].title, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),), 
-                  trailing: Text(categories[index].numberr, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
-                  ),
-              )
-              ),
-            ),
+  //               child: ListTile(
+  // //                   shape: RoundedRectangleBorder(
+  // //         side: BorderSide(width: 2, color: Colors.indigoAccent), //redAccent
+  // //         borderRadius: BorderRadius.circular(20), //10
+  // // ),
+  //                 iconColor: Colors.white,// Colors.indigoAccent,
+  //                 leading:  categories[index].icons,
+  //                 title: Text(categories[index].title, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),), 
+  //                 trailing: Text('${loadedPatient.numberHeart}', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
+                  
+  //                 //categories[index].numberr
+  //                 ),
+  //             )
+  //             ),
+  //           ),
               InkWell(
                 onTap:() {
                   //navigation push
