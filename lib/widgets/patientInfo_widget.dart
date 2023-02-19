@@ -84,7 +84,7 @@ class _PatientInfoWidgetState extends State<PatientInfoWidget> {
                   SizedBox(width: 50,),
                   Text('${categories.elementAt(2).title}', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
                   SizedBox(width: 160,),
-                  Text(loadedPatient.numberPressure,          //'Age',
+                  Text(loadedPatient.numberFever,          //'Age',
                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
                   )
                 ],

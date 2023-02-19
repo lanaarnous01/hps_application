@@ -14,13 +14,14 @@ static const routeName = '/updatePatient';
 class _UpdateSheetState extends State<UpdateSheet> {
   //@override
     final _formm = GlobalKey<FormState>();
-  var _edited = Patient(name: '', wardNo: '', id: null, numberHeart: '', numberPressure: '');
+  var _edited = Patient(name: '', wardNo: '', id: null, numberHeart: '', numberPressure: '', numberFever: '');
   var _initValues = {
     
     'name': '',
     'wardNo.': '',
     'numberHeart': '',
-    'numberPressure': ''
+    'numberPressure': '',
+    'numberFever': ''
   };
   var _isInit = true;
 
@@ -35,7 +36,8 @@ class _UpdateSheetState extends State<UpdateSheet> {
           'name': _edited.name,
           'wardNo.': _edited.wardNo,
           'numberHeart': _edited.numberHeart,
-          'numberPressure': _edited.numberPressure
+          'numberPressure': _edited.numberPressure,
+          'numberFever': _edited.numberFever
       };
         }
     }
@@ -79,7 +81,7 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-      _edited = Patient(name: value, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure);
+      _edited = Patient(name: value, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure,  numberFever: _edited.numberFever);
         },
       );
 
@@ -100,7 +102,7 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-          _edited = Patient(name: _edited.name, wardNo: value, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure);
+          _edited = Patient(name: _edited.name, wardNo: value, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure, numberFever: _edited.numberFever);
         },
       );
 
@@ -120,7 +122,7 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: value, numberPressure: _edited.numberPressure);
+      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: value, numberPressure: _edited.numberPressure, numberFever: _edited.numberFever);
         },
       );
 
@@ -140,7 +142,27 @@ void _saveForm(){
           return null;
         },
         onSaved: (value) {
-      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: value);
+      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: value, numberFever: _edited.numberFever);
+        },
+      );
+
+       Widget buildFever() => TextFormField(
+    initialValue: _initValues['numberFever'],
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.indigoAccent, width: 3)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.indigo, width: 3)),
+          labelText: 'Fever',
+        ),
+        validator: (value) {
+          if (value!.isEmpty){
+            return 'Please enter Fever';
+          }
+          return null;
+        },
+        onSaved: (value) {
+      _edited = Patient(name: _edited.name, wardNo: _edited.wardNo, id: _edited.id, numberHeart: _edited.numberHeart, numberPressure: _edited.numberPressure, numberFever: value);
         },
       );
 
@@ -190,6 +212,8 @@ void _saveForm(){
                     SizedBox(height: 50,),
                     buildPressure(),
                     SizedBox(height: 50,),
+                    buildFever(),
+                    SizedBox(height: 30,),
                      IconButton(onPressed: _saveForm, icon: Icon(Icons.add))
                   ],
                 ),

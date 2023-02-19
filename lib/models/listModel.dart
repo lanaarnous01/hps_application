@@ -7,14 +7,14 @@ class Patient {
   final id;
   final numberHeart;
   final numberPressure;
-  //final numberFever;
+  final numberFever;
   Patient({
    @required this.name, 
    @required  this.wardNo,
    @required this.id,
    @required this.numberHeart,
   @required this.numberPressure,
-  // @required this.numberFever,
+   @required this.numberFever,
    });
 }
 
