@@ -23,5 +23,6 @@ class Category{
   final title;
   final numberr;
   final icons;
-  Category({this.title, this.numberr, this.icons});
+  final id;
+  Category({this.title, this.numberr, this.icons, this.id});
 }

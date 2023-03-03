@@ -24,12 +24,12 @@ Patient(name: 'name6', wardNo: 'wardNo6', id: '6', numberHeart: '8', numberPress
 }
   void updatePatient(String id, Patient newPatient){ //Patient newPatient // String name
     final patientIndex = _patients.indexWhere((pat) => pat.id == id); //pat.name == name
-    if (patientIndex >=0){
+     if (patientIndex >=0){
       _patients[patientIndex] = newPatient; 
       notifyListeners();
     }else{
       print('.....');
-    }
+    };
   }
   void deletePatient(String id){
     _patients.removeWhere((pat) => pat.id == id);
@@ -43,20 +43,36 @@ class Categories with ChangeNotifier{
     Category(
       title: 'Heart Rate', 
       numberr: '9', 
-      icons: Icon(Icons.monitor_heart_outlined)),
+      icons: Icon(Icons.monitor_heart_outlined),
+      id:  '1'
+      ),
+      
     Category(
       title: 'Blood Pressure', 
       numberr: '98', 
-      icons: Icon(Icons.access_alarm_sharp) ),
+      icons: Icon(Icons.access_alarm_sharp),
+       id: '2' 
+       ),
     Category(
       title: 'Fever',
       numberr: '36',
-      icons: Icon(Icons.thermostat)
+      icons: Icon(Icons.thermostat), 
+      id: '3'
     )
 
   ];
 List <Category> get categories{
   return[..._categories];
+}
+Category findbyIdCategory(String id){
+  return _categories.firstWhere((cat) => cat.id == id); // return _patients.firstWhere((prod) => prod.id == id);
+}
+void addCategory(Category category){
+  final newCategory = Category(title: category.title, numberr: category.numberr, id: DateTime.now().toString(), icons: category.icons
+  );
+  _categories.add(newCategory);
+  notifyListeners();
+  
 }
  void updateNumberr(String title, Category newCategory){ //Patient newPatient // String name
     final patientIndex = _categories.indexWhere((pat) => pat.title == title); //pat.name == name
@@ -67,4 +83,17 @@ List <Category> get categories{
       print('.....');
     }
   }
+
+    void addActivity(List<Patient> activityHistory, String total){ //List<Patient> Category
+    _categories.insert(0, 
+    Category(
+      id: DateTime.now().toString(),
+      title: activityHistory,
+      numberr: total
+    //  numberr: numberrr
+    )
+    );
+    notifyListeners();
+  }
+
 }

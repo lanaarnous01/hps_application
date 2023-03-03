@@ -14,7 +14,7 @@ class HistoryActivity extends StatelessWidget {
       margin: EdgeInsets.all(10), 
       child: Column(
         children: [
-          ListTile(title: Text('\$${history.activity}'),
+          ListTile(title: Text('\$'), //${history.activity}
           
           )
         ],

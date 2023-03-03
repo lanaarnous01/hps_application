@@ -11,8 +11,12 @@ import 'pages/patientList.dart';
 import 'package:provider/provider.dart';
 import './providers/patients_providers.dart';
 import './widgets/patientInfo_widget.dart';
+import './pages/updateMeasurements.dart';
+//import 'package:firebase_core/firebase_core.dart';
 void main() {
   runApp(const MyApp());
+ 
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +38,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => History(),
         ),
-        ChangeNotifierProvider(create: (context) => Categories())
+        ChangeNotifierProvider(
+          create: (context) => Categories())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -45,7 +50,8 @@ class MyApp extends StatelessWidget {
         addPatient_page.routeName:(context) => addPatient_page(),
         UpdateSheet.routeName:(context) => UpdateSheet(),
         PatientInfoWidget.routeName:(context) => PatientInfoWidget(),
-         // EditProductScreen.routeName: (ctx) => EditProductScreen(),
+       UpdateMeasurements.routeName:((context) => UpdateMeasurements()),
+         
          },
     
     
